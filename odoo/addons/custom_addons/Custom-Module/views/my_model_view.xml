@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_form_my_model" model="ir.ui.view">
+        <field name="name">my.model.form</field>
+        <field name="model">my.custom.model</field>
+        <field name="arch" type="xml">
+            <form string="My Custom Model">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_my_model" model="ir.ui.view">
+        <field name="name">my.model.tree</field>
+        <field name="model">my.custom.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_my_model" model="ir.actions.act_window">
+        <field name="name">My Custom Models</field>
+        <field name="res_model">my.custom.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_my_model" name="My Custom Models" action="action_my_model"/>
+</odoo>
+
