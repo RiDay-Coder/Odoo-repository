@@ -1,0 +1,63 @@
+<odoo>
+    <record id="view_change_order_form" model="ir.ui.view">
+        <field name="name">construction.change.order.form</field>
+        <field name="model">construction.change_order</field>
+        <field name="arch" type="xml">
+            <form string="Change Order">
+                <sheet>
+
+                  <!-- logo -->
+                <div style="text-align: center; margin-bottom: 10px;">
+                        <img src="Users\offic\OneDrive\Desktop\odoo18\custom_addons\construction_change_order\static\logo\construct.png" style="height:80px;"/>
+                    </div>
+
+                  <!-- form fields -->
+                    <group>
+                        <field name="name"/>
+                        <field name="project_id"/>
+                        <field name="change_type"/>
+                        <field name="description"/>
+                        <field name="reason"/>
+                        <field name="cost_impact"/>
+                        <field name="date_requested"/>
+                        <field name="requested_by"/>
+                        <field name="status" readonly="1"/>
+                        <field name="approver_id" readonly="1"/>
+                        <field name="date_approved" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button string="Submit" type="object" name="action_submit" states="draft" class="btn-primary"/>
+                        <button string="Approve" type="object" name="action_approve" states="submitted" class="btn-success"/>
+                        <button string="Reject" type="object" name="action_reject" states="submitted" class="btn-danger"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_change_order_tree" model="ir.ui.view">
+        <field name="name">construction.change.order.tree</field>
+        <field name="model">construction.change_order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="change_type"/>
+                <field name="cost_impact"/>
+                <field name="status"/>
+                <field name="date_requested"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_construction_root" name="Construction"/>
+    <menuitem id="menu_construction_change_orders" name="Change Orders" parent="menu_construction_root"/>
+    <menuitem id="menu_construction_change_order_items" name="All Change Orders"
+              parent="menu_construction_change_orders" action="action_change_order"/>
+
+    <record id="action_change_order" model="ir.actions.act_window">
+        <field name="name">Change Orders</field>
+        <field name="res_model">construction.change_order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

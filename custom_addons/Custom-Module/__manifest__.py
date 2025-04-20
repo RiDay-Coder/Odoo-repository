@@ -1,5 +1,5 @@
 {
-    'name': 'first module', 
+    'name': 'First module', 
     'summary': 'First Odoo 18 module',
     'description': '''
         Testing Purpuses.
